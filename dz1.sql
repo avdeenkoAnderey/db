@@ -69,7 +69,7 @@ INSERT INTO artist_albums (artist_id, album_id) VALUES
 CREATE TABLE tracks (
     track_id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    duration float NULL CHECK (duration > 0),
+    duration int NULL CHECK (duration > 0),
     album_id INT NOT NULL,
     FOREIGN KEY (album_id) REFERENCES albums(album_id) ON DELETE CASCADE
 );
