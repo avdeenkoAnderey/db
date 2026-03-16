@@ -29,3 +29,13 @@ WHERE art.artist_id NOT IN (
     JOIN albums AS ab ON a.album_id = ab.album_id
     WHERE ab.release_year = 2020
 );
+
+--5.Названия сборников, в которых присутствует конкретный исполнитель (выберите его сами).
+SELECT DISTINCT c.name AS "название сборника"
+FROM collection c
+INNER JOIN collection_tracks ct ON c.collection_id = ct.collection_id
+INNER JOIN tracks t ON ct.track_id = t.track_id
+INNER JOIN albums a ON t.album_id = a.album_id
+INNER JOIN artist_albums aa ON a.album_id = aa.album_id
+INNER JOIN artists ar ON aa.artist_id = ar.artist_id
+WHERE ar.name = 'Земфира'
